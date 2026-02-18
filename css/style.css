@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&family=Bebas+Neue&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --ink:       #1a1008;
+  --paper:     #f5eed8;
+  --paper2:    #ece4c5;
+  --keys-bg:   #2b2318;
+  --key-face:  #d4cbb0;
+  --key-side:  #8a7f68;
+  --key-press: #c4baa0;
+  --accent:    #c0392b;
+  --accent2:   #e67e22;
+  --chrome:    #9ba3a8;
+  --chrome2:   #6d7579;
+  --glow:      rgba(192,57,43,0.4);
+  --shadow:    rgba(10,6,2,0.55);
+
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-head: 'Bebas Neue', sans-serif;
+  --font-type: 'Special Elite', cursive;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: #1a1208;
+    background-image: radial-gradient(ellipse at 20% 10%, #2a1f0d 0%, transparent 55%), radial-gradient(ellipse at 80% 90%, #0f0a04 0%, transparent 55%);
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    overflow-x: hidden;
+    position: relative;
+}
+
+#grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+}
+

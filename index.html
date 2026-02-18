@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYPO-MATIC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="grain" aria-hidden="true"></canvas>
+
+    <header>
+        <div class="brand">TYPO<span>·</span>MATIC</div>
+        <div class="tagline">Model IX — ASCII Art Edition</div>
+    </header>
+
+    <main>
+        <section class="paper-wrap">
+            <div class="paper-roller"></div>
+            <div class="paper" id="paper">
+                <div class="paper-lines" aria-hidden="true"></div>
+                <pre id="output" aria-live="polite" aria-label="Typewriter output"></pre>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+            <div class="paper-shadow"></div>
+        </section>
+
+        <aside class="side-actions">
+            <button class="rip-btn" id="ripBtn" title="Rip the paper and start over">
+                <span class="rip-icon">✂</span>
+                <span class="rip-label">RIP &amp;<br>TRASH</span>
+            </button>
+            <div class="char-count" id="charCount">0 chars</div>
+        </aside>
+
+        <section class="keyboard-section">
+            <div class="ascii-palette">
+                <div class="palette-label">— ASCII ART PALETTE —</div>
+                <div class="palette-keys" id="paletteKeys"></div>
+            </div>
+
+            <div class="qwerty" id="qwerty"></div>
+
+            <div class="util-row">
+                <button class="key key-wide" data-char=" " data-label="SPACE">SPACE</button>
+                <button class="key key-enter" data-char="\n" data-label="RETURN">⏎ RETURN</button>
+                <button class="key key-tab" data-char="    " data-label="TAB">→ TAB</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="trash-area" id="trashArea" aria-hidden="true">
+        <div class="trash-bin">🗑</div>
+        <div class="paper-shred" id="paperShred"></div>
+    </div>
+
+    <div class="rip-flash" id="ripFlash"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
