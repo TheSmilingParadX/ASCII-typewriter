@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Share+Tech+Mono&family=Bebas+Neue&display=swap');
 
 /* --- RESET & TOKENS --- */
 *,
@@ -26,7 +26,7 @@
 
     --font-mono: 'Share Tech Mono', monospace;
     --font-head: 'Bebas Neue', sans-serif;
-    --font-type: 'Special Elite', cursive;
+    --font-type: 'Courier Prime', 'Courier New', monospace;
 }
 
 html {

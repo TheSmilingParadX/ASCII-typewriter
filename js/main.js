@@ -12,7 +12,6 @@ function currentLineLength() {
 
 // ── DOM refs ───────────────────────────────────────
 const output    = document.getElementById("output");
-const cursor    = document.getElementById("cursor");
 const charCount = document.getElementById("charCount");
 const ripBtn    = document.getElementById("ripBtn");
 const paper     = document.getElementById("paper");
@@ -150,9 +149,16 @@ function typeChar(ch) {
 
 // ── Render ─────────────────────────────────────────
 function renderOutput() {
-  output.textContent = text;
-  // Scroll paper to bottom
+  // Embed cursor as part of the text so it always follows the last character
+  output.innerHTML = escapeHtml(text) + '<span class="cursor">█</span>';
   paper.scrollTop = paper.scrollHeight;
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 function updateCount() {
