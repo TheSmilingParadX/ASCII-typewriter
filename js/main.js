@@ -2,6 +2,13 @@
 
 // ── State ──────────────────────────────────────────
 let text = "";
+const LINE_WIDTH = 60; // max characters per line
+
+// Returns the length of the current (last) line
+function currentLineLength() {
+  const lines = text.split("\n");
+  return lines[lines.length - 1].length;
+}
 
 // ── DOM refs ───────────────────────────────────────
 const output    = document.getElementById("output");
@@ -29,25 +36,16 @@ const SHIFT_MAP = {
   ";":":","'":"\"",",":"<",".":">","/":"?"
 };
 
-// ── ASCII Art Characters ────────────────────────────
+// ── ASCII Art Characters (24 most useful) ──────────
 const ASCII_CHARS = [
-  // Lines & corners
-  "─","│","┼","┌","┐","└","┘","├","┤","┬","┴",
-  // Doubles
-  "═","║","╔","╗","╚","╝","╠","╣","╦","╩","╬",
-  // Diagonals / slashes
-  "/","\\","_","|",
+  // Box-drawing
+  "─","│","┌","┐","└","┘","┼","├","┤","┬","┴",
   // Shading blocks
-  "░","▒","▓","█","▀","▄","▌","▐",
-  // Misc symbols
-  "*","#","@","~","^","<",">","±","×","÷",
-  // Faces / classic
-  ":",")","-","(","D","P","O","^","v",
-  // Arrows
-  "←","→","↑","↓","↔","↕","⇒","⇐","⇑","⇓",
-  // Decorative
-  "·","•","◦","◉","○","●","◆","◇","★","☆",
-  "♠","♣","♥","♦","♪","♫","☺","☻","✦","✧"
+  "░","▒","▓","█","▀","▄",
+  // Punctuation / classic ASCII art
+  "/","\\","_","|",
+  // Dots & stars
+  "·","•","★",
 ];
 
 // ── Build QWERTY keyboard ──────────────────────────
@@ -129,7 +127,22 @@ function bindUtilRow() {
 
 // ── Type a character ───────────────────────────────
 function typeChar(ch) {
-  text += ch;
+  if (ch === "\n" || ch === "    ") {
+    // Always allow newlines and tabs
+    text += ch;
+  } else if (ch === " " && currentLineLength() >= LINE_WIDTH) {
+    // Swallow spaces at the margin
+    playBellSound();
+    flashMargin();
+    return;
+  } else if (ch.length === 1 && currentLineLength() >= LINE_WIDTH) {
+    // Hard stop — carriage is at the end
+    playBellSound();
+    flashMargin();
+    return;
+  } else {
+    text += ch;
+  }
   renderOutput();
   updateCount();
   playTypeSound();
@@ -179,6 +192,31 @@ function playTypeSound() {
     osc.start();
     osc.stop(ctx.currentTime + 0.07);
   } catch (_) {}
+}
+
+function playBellSound() {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.3);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.4);
+  } catch (_) {}
+}
+
+function flashMargin() {
+  const el = document.getElementById("marginWarning");
+  el.classList.remove("active");
+  el.offsetHeight; // reflow
+  el.classList.add("active");
+  setTimeout(() => el.classList.remove("active"), 500);
 }
 
 function playRipSound() {
@@ -327,41 +365,6 @@ function highlightPhysicalKey(char) {
     }
   });
 }
-
-// ── Grain canvas ───────────────────────────────────
-(function initGrain() {
-  const canvas = document.getElementById("grain");
-  const ctx    = canvas.getContext("2d");
-
-  function resize() {
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  let frame = 0;
-  function draw() {
-    frame++;
-    if (frame % 3 !== 0) { requestAnimationFrame(draw); return; } // every 3 frames
-
-    const w = canvas.width;
-    const h = canvas.height;
-    const imageData = ctx.createImageData(w, h);
-    const data = imageData.data;
-
-    for (let i = 0; i < data.length; i += 4) {
-      const v = Math.random() * 255 | 0;
-      data[i] = data[i+1] = data[i+2] = v;
-      data[i+3] = 18;
-    }
-
-    ctx.putImageData(imageData, 0, 0);
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener("resize", resize);
-  resize();
-  draw();
-})();
 
 // ── Init ───────────────────────────────────────────
 buildQwerty();

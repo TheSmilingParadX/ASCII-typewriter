@@ -1,30 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&family=Bebas+Neue&display=swap');
 
 /* --- RESET & TOKENS --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 :root {
-  --ink:       #1a1008;
-  --paper:     #f5eed8;
-  --paper2:    #ece4c5;
-  --keys-bg:   #2b2318;
-  --key-face:  #d4cbb0;
-  --key-side:  #8a7f68;
-  --key-press: #c4baa0;
-  --accent:    #c0392b;
-  --accent2:   #e67e22;
-  --chrome:    #9ba3a8;
-  --chrome2:   #6d7579;
-  --glow:      rgba(192,57,43,0.4);
-  --shadow:    rgba(10,6,2,0.55);
+    --ink: #1a1008;
+    --paper: #f5eed8;
+    --paper2: #ece4c5;
+    --keys-bg: #2b2318;
+    --key-face: #d4cbb0;
+    --key-side: #8a7f68;
+    --key-press: #c4baa0;
+    --accent: #c0392b;
+    --accent2: #e67e22;
+    --chrome: #9ba3a8;
+    --chrome2: #6d7579;
+    --glow: rgba(192, 57, 43, 0.4);
+    --shadow: rgba(10, 6, 2, 0.55);
 
-  --font-mono: 'Share Tech Mono', monospace;
-  --font-head: 'Bebas Neue', sans-serif;
-  --font-type: 'Special Elite', cursive;
+    --font-mono: 'Share Tech Mono', monospace;
+    --font-head: 'Bebas Neue', sans-serif;
+    --font-type: 'Special Elite', cursive;
 }
 
 html {
@@ -33,22 +35,14 @@ html {
 
 body {
     background: #1a1208;
-    background-image: radial-gradient(ellipse at 20% 10%, #2a1f0d 0%, transparent 55%), radial-gradient(ellipse at 80% 90%, #0f0a04 0%, transparent 55%);
+    background-image:
+        radial-gradient(ellipse at 20% 10%, #2a1f0d 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, #0f0a04 0%, transparent 55%);
     min-height: 100vh;
     color: var(--ink);
     font-family: var(--font-mono);
     overflow-x: hidden;
     position: relative;
-}
-
-/* --- GRAIN OVERLAY --- */
-#grain {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.07;
-    mix-blend-mode: overlay;
 }
 
 /* --- HEADER --- */
@@ -63,10 +57,11 @@ header {
     font-family: var(--font-head);
     font-size: 3rem;
     color: var(--paper);
-    letter-spacing: 0.1rem;
-    text-shadow: 0 0 30px var(glow), 2px 2px 0 var(--accent);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 30px var(--glow), 2px 2px 0 var(--accent);
     line-height: 1;
 }
+
 .brand span {
     color: var(--accent);
 }
@@ -108,7 +103,7 @@ main {
     height: 22px;
     background: linear-gradient(180deg, #8a8a8a 0%, #555 40%, #3a3a3a 60%, #6a6a6a 100%);
     border-radius: 4px;
-    box-shadow: 0 3px 8px var(--shadow), inset 0 1px 1px rgba(255,255,255,0.2);
+    box-shadow: 0 3px 8px var(--shadow), inset 0 1px 1px rgba(255, 255, 255, 0.2);
     z-index: 2;
 }
 
@@ -119,7 +114,7 @@ main {
     left: 0;
     right: 0;
     height: 2px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .paper {
@@ -128,7 +123,7 @@ main {
     min-height: 320px;
     padding: 2rem 2.5rem 1.5rem;
     overflow: hidden;
-    box-shadow: 4px 4px 0 #0d0a04, 8px 8px 20px rgba(0,0,0,0.5);
+    box-shadow: 4px 4px 0 #0d0a04, 8px 8px 20px rgba(0, 0, 0, 0.5);
     border-top: none;
 }
 
@@ -136,7 +131,11 @@ main {
 .paper-lines {
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(180deg, transparent, transparent 27px, rgba(100,130,200,0.12) 27px, rgba(100,130,200,0.12) 28px);
+    background-image: repeating-linear-gradient(180deg,
+            transparent,
+            transparent 27px,
+            rgba(100, 130, 200, 0.12) 27px,
+            rgba(100, 130, 200, 0.12) 28px);
     pointer-events: none;
 }
 
@@ -148,13 +147,13 @@ main {
     bottom: 0;
     left: 56px;
     width: 1px;
-    background: rgba(200,100,100,0.2);
+    background: rgba(200, 100, 100, 0.2);
 }
 
 /* paper torn edge shadow */
 .paper-shadow {
     height: 12px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.25), transparent);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent);
     margin: 0 10px;
 }
 
@@ -168,7 +167,7 @@ main {
     min-height: 240px;
     position: relative;
     z-index: 1;
-    text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.2);
+    text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .cursor {
@@ -179,12 +178,16 @@ main {
     position: relative;
     z-index: 1;
 }
+
 @keyframes blink {
-    0%, 100% {
-        opacity: 1;
+
+    0%,
+    100% {
+        opacity: 1
     }
+
     50% {
-        opacity: 0;
+        opacity: 0
     }
 }
 
@@ -212,7 +215,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    box-shadow: 3px 3px 0 #6e1608, 5px 5px 12px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px 0 #6e1608, 5px 5px 12px rgba(0, 0, 0, 0.5);
     transition: transform 0.07s, box-shadow 0.07s;
     font-family: var(--font-mono);
     font-size: 0.55rem;
@@ -222,17 +225,19 @@ main {
 }
 
 .rip-btn:hover {
-    background: linear-gradient(160deg, #e74c4c,#c0392b);
+    background: linear-gradient(160deg, #e74c3c, #c0392b);
 }
+
 .rip-btn:active {
     transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 #6e1608
+    box-shadow: 1px 1px 0 #6e1608;
 }
 
 .rip-icon {
     font-size: 1.5rem;
     line-height: 1;
 }
+
 .rip-label {
     font-size: 0.5rem;
     letter-spacing: 0.08em;
@@ -254,12 +259,12 @@ main {
     background: var(--keys-bg);
     border-radius: 8px;
     padding: 1.5rem 1.5rem 1.2rem;
-    box-shadow: 0 6px 0 #0a0704, 0 8px 20px rgba(0,0,0,0.6);
+    box-shadow: 0 6px 0 #0a0704, 0 8px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     position: relative;
 }
 
 .keyboard-section::before {
-    content: 'TYPO-MATIC MODEL IX';
+    content: 'TYPO·MATIC MODEL IX';
     position: absolute;
     bottom: 0.4rem;
     left: 50%;
@@ -267,7 +272,7 @@ main {
     font-family: var(--font-head);
     font-size: 0.7rem;
     letter-spacing: 0.3em;
-    color: rgba(255,255,255,0.12);
+    color: rgba(255, 255, 255, 0.12);
     white-space: nowrap;
 }
 
@@ -305,7 +310,9 @@ main {
     padding: 0 6px;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 4px 0 var(--key-side), 0 5px 5px rgba(0,0,0,0.4);
+    box-shadow:
+        0 4px 0 var(--key-side),
+        0 5px 5px rgba(0, 0, 0, 0.4);
     transition: transform 0.06s, box-shadow 0.06s, background 0.06s;
     white-space: pre;
     line-height: 1;
@@ -315,63 +322,68 @@ main {
     user-select: none;
 }
 
-.key .ascii-key {
+.key.ascii-key {
     font-size: 0.75rem;
     min-width: 36px;
     height: 36px;
     background: #e8dfc0;
-    border-top: 2px solid rgba(255,255,255,0.5);
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    letter-spacing: 0;
 }
 
 .key:hover {
-  background: #f0e8c8;
+    background: #f0e8c8;
 }
+
 .key:active,
 .key.pressed {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 var(--key-side), 0 2px 3px rgba(0,0,0,0.3);
-  background: var(--key-press);
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--key-side), 0 2px 3px rgba(0, 0, 0, 0.3);
+    background: var(--key-press);
 }
 
 /* QWERTY layout */
 .qwerty {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: center;
-  margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 6px;
 }
 
 .key-row {
-  display: flex;
-  gap: 5px;
+    display: flex;
+    gap: 5px;
 }
 
 /* special key widths */
-.key-wide  {
+.key-wide {
     min-width: 180px;
 }
+
 .key-enter {
     min-width: 100px;
     background: #d0c8a8;
 }
+
 .key-tab {
     min-width: 70px;
 }
 
 .util-row {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 6px;
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 6px;
 }
 
-/* num row */
+/* number row */
 .key-num {
     font-size: 0.7rem;
     flex-direction: column;
     gap: 1px;
 }
+
 .key-num .key-top {
     font-size: 0.65rem;
     color: var(--accent);
@@ -398,9 +410,10 @@ main {
 
 .trash-bin {
     font-size: 3rem;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
     animation: none;
 }
+
 .trash-area.animating .trash-bin {
     animation: trashShake 0.5s ease;
 }
@@ -427,18 +440,24 @@ main {
 }
 
 @keyframes trashShake {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(0deg);
     }
+
     20% {
         transform: rotate(-15deg);
     }
+
     40% {
         transform: rotate(10deg);
     }
+
     60% {
         transform: rotate(-8deg);
     }
+
     80% {
         transform: rotate(5deg);
     }
@@ -447,12 +466,13 @@ main {
 .rip-flash {
     position: fixed;
     inset: 0;
-    background: rgba(192,57,43,0.15);
+    background: rgba(192, 57, 43, 0.15);
     pointer-events: none;
     z-index: 90;
     opacity: 0;
     transition: opacity 0.05s;
 }
+
 .rip-flash.flash {
     opacity: 1;
 }
@@ -463,17 +483,19 @@ main {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
+
     30% {
         transform: translateY(-20px) rotate(-3deg);
         opacity: 0.9;
     }
+
     100% {
-        transform: translateY(120px) rotate(12deg);
+        transform: translateY(120px) rotate(12deg) skewX(5deg);
         opacity: 0;
     }
 }
 
-.paper .ripping {
+.paper.ripping {
     animation: ripAway 0.55s ease-in forwards;
 }
 
@@ -482,10 +504,44 @@ main {
     0% {
         transform: scale(1);
     }
+
     40% {
         transform: scale(0.93);
     }
+
     100% {
+        transform: scale(1);
+    }
+}
+
+/* --- MARGIN WARNING */
+.margin-warning {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s;
+    z-index: 5;
+}
+
+.margin-warning.active {
+    opacity: 1;
+    animation: marginPulse 0.5s ease-out forwards;
+}
+
+@keyframes marginPulse {
+    0% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
         transform: scale(1);
     }
 }
@@ -494,9 +550,11 @@ main {
 ::-webkit-scrollbar {
     width: 6px;
 }
+
 ::-webkit-scrollbar-track {
     background: var(--keys-bg);
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--key-side);
     border-radius: 3px;

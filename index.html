@@ -7,24 +7,25 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <canvas id="grain" aria-hidden="true"></canvas>
-
     <header>
         <div class="brand">TYPO<span>·</span>MATIC</div>
         <div class="tagline">Model IX — ASCII Art Edition</div>
     </header>
 
     <main>
+        <!-- paper output -->
         <section class="paper-wrap">
             <div class="paper-roller"></div>
             <div class="paper" id="paper">
                 <div class="paper-lines" aria-hidden="true"></div>
                 <pre id="output" aria-live="polite" aria-label="Typewriter output"></pre>
                 <span class="cursor" id="cursor">█</span>
+                <div class="margin-warning" id="marginWarning">— MARGIN —</div>
             </div>
             <div class="paper-shadow"></div>
         </section>
 
+        <!-- side actions -->
         <aside class="side-actions">
             <button class="rip-btn" id="ripBtn" title="Rip the paper and start over">
                 <span class="rip-icon">✂</span>
@@ -33,18 +34,22 @@
             <div class="char-count" id="charCount">0 chars</div>
         </aside>
 
+        <!-- keyboard -->
         <section class="keyboard-section">
+            <!-- ASCII art palette -->
             <div class="ascii-palette">
                 <div class="palette-label">— ASCII ART PALETTE —</div>
                 <div class="palette-keys" id="paletteKeys"></div>
             </div>
 
+            <!-- QWERTY keyboard -->
             <div class="qwerty" id="qwerty"></div>
 
+            <!-- util row -->
             <div class="util-row">
+                <button class="key key-tab" data-char="    " data-label="TAB">TAB</button>
                 <button class="key key-wide" data-char=" " data-label="SPACE">SPACE</button>
-                <button class="key key-enter" data-char="\n" data-label="RETURN">⏎ RETURN</button>
-                <button class="key key-tab" data-char="    " data-label="TAB">→ TAB</button>
+                <button class="key key-enter" data-char="\n" data-label="RETURN">ENTER</button>
             </div>
         </section>
     </main>
